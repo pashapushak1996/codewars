@@ -59,22 +59,36 @@ function XO(str) {
 // Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
 //
 // If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+//
+// function order(words) {
+//     words = words.split(' ').map((word) => {
+//         word = word.split('')
+//         word = word.sort()
+//         return word.map(Number).splice(0, 1).concat(...word)
+//     });
+//
+//     console.log(words);
+// }
+//
+// order("is2 Thi1s T4est 3a")
 
-function order(words) {
-    words = words.split(' ').map((word) => {
-        word = word.split('')
-        word = word.sort()
-        return word.map(Number).splice(0, 1).concat(...word)
-    });
-
-    console.log(words);
-}
-
-order("is2 Thi1s T4est 3a")
-
-
+//Kata 5
 //In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
 
+function list(array) {
+    return list.filter((el) => typeof el === 'number');
+}
+
+
+
+
+function findUniq(arr) {
+    return arr.find(e => arr.lastIndexOf(e) === arr.indexOf(e))
+}
+
+let findUniq1 = findUniq([0, 1, 0, 0, 0, 0]);
+
+console.log(findUniq1);
 
 
 
