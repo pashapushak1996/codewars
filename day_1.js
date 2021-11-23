@@ -21,4 +21,3 @@ function descendingOrder(n) {
             .join('')
             .toString())
 }
-
