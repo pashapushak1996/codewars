@@ -3,7 +3,6 @@
 
 function duplicateCount(text) {
     const characters = [];
-
     text = text.toLowerCase().split('').sort();
 
     for (let i = 0; i < text.length; i++) {
