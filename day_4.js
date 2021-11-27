@@ -174,6 +174,7 @@ function uniqueSum(lst) {
     return lst.length ? result.reduce((acc, curr) => acc + curr) : null;
 }
 
+
 //Second solution
 function uniqueSumTwo(lst) {
     return [...new Set(lst)].reduce((a, b) => a + b, null);
