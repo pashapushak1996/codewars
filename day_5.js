@@ -103,7 +103,7 @@ const minus = (a) => (b) => b - a;
 const times = (a) => (b) => Math.round(a * b);
 const dividedBy = (a) => (b) => Math.round(b / a);
 //Task 4
-//Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+//Write a function that accepts an people of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
 
 function createPhoneNumber(numbers) {
     let phoneNumber = '(xxx) xxx-xxxx';
@@ -119,10 +119,10 @@ let s = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
 
 //Task 5
 const disemvowel = (str = '') => {
-    const arrayOfCharacter = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u'];
-    for (let i = 0; i < arrayOfCharacter.length; i++) {
+    const peopleOfCharacter = ['A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u'];
+    for (let i = 0; i < peopleOfCharacter.length; i++) {
 
-        const character = arrayOfCharacter[i];
+        const character = peopleOfCharacter[i];
 
         for (let j = 0; j < str.length; j++) {
 
@@ -166,6 +166,7 @@ function nextBigger(n) {
     //your code here
 }
 
+
 //Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:
 //
 // 12 ==> 21
@@ -196,4 +197,68 @@ function nextBigger1(n) {
     return -1
 }
 
-nextBigger(8574);
+
+//Task 8
+//Your job is to create a class called Song.
+//
+// A new Song will take two parameters, title and artist.
+//
+// const mountMoose = new Song('Mount Moose', 'The Snazzy Moose');
+//
+// mountMoose.title => 'Mount Moose'
+// mountMoose.artist => 'The Snazzy Moose'
+// You will also have to create an instance method named howMany() (or how_many()).
+//
+// The method takes an array of people who have listened to the song that day. The output should be how many new listeners the song gained on that day out of all listeners. Names should be treated in a case-insensitive manner, i.e. "John" is the same as "john".
+
+class Song {
+    constructor(title, artist) {
+        this.title = title;
+        this.artist = artist;
+        this.listeners = [];
+    }
+
+    howMany(people) {
+        people = people.map(el => el.toLowerCase());
+        people = people.filter((el, index, arr) => arr.indexOf(el) === index && !this.listeners.includes(el));
+        this.listeners.push(...people);
+        return people.length
+    }
+}
+
+const mount = new Song('Love you', 'Pavlo Pushak');
+//Task 9
+//Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+//
+// Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+
+String.prototype.toJadenCase = function () {
+    function capitalizeFirstLetter(string = '') {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    return this.split(' ').map(capitalizeFirstLetter).join(' ');
+};
+
+//Task 10
+//Simple, given a string of words, return the length of the shortest word(s).
+//
+// String will never be empty and you do not need to account for different data types.
+
+function findShort(s) {
+    let min = s.split(' ')[0].length;
+
+    s.split(' ').forEach((el) => {
+        if (min > el.length) {
+            min = el.length;
+        }
+    });
+
+    return min
+}
+
+findShort("Let's travel abroad shall we");
+
+
+
