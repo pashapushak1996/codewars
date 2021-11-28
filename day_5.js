@@ -136,6 +136,64 @@ const disemvowel = (str = '') => {
     return str
 }
 
+//Task 6
 
-disemvowel("This website is for losers LOL!")
+//Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:
 
+function nextBigger(n) {
+    n = n.toString().split('');
+
+    if (n.length === 1) {
+        return null;
+    }
+
+
+    for (let i = 0; i < n.length; i++) {
+
+        if (n[i] < n[i + 1]) {
+            //Replace element
+            let temp = n[i];
+
+            n[i] = n[i + 1];
+
+            n[i + 1] = temp;
+        }
+    }
+
+
+    console.log(n);
+
+    //your code here
+}
+
+//Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:
+//
+// 12 ==> 21
+// 513 ==> 531
+// 2017 ==> 2071
+// nextBigger(num: 12)   // returns 21
+// nextBigger(num: 513)  // returns 531
+// nextBigger(num: 2017) // returns 2071
+// If the digits can't be rearranged to form a bigger number, return -1 (or nil in Swift):
+//
+// 9 ==> -1
+// 111 ==> -1
+// 531 ==> -1
+// nextBigger(num: 9)   // returns nil
+// nextBigger(num: 111) // returns nil
+// nextBigger(num: 531) // returns nil
+
+function nextBigger1(n) {
+    const sortedDigits = n => ('' + n)
+        .split('')
+        .sort((a, b) => b - a);
+
+    const max = +sortedDigits(n).join('');
+
+    for (let i = n + 1; i <= max; i++) {
+        if (max === +sortedDigits(i).join('')) return i
+    }
+    return -1
+}
+
+nextBigger(8574);
