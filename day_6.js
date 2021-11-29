@@ -60,8 +60,11 @@ function makeNegativeSecond(num) {
 const uniqueInOrder = (iterable) => {
     const strArr = Array.isArray(iterable) ? iterable : iterable.split('');
 
-    return strArr.filter((el, i) => strArr[i] !== strArr[i + 1]);
+    return strArr.filter((el, i) => el !== strArr[i + 1]);
 };
+
+//Better solution
+const uniqueInOrderBetter = (iterable) => [...iterable].filter((el, i) => iterable[i] !== iterable[i + 1]);
 
 
 uniqueInOrder(['A', 'B', 'C', 'D', 'A', 'B']);
