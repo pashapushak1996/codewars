@@ -260,5 +260,67 @@ function findShort(s) {
 
 findShort("Let's travel abroad shall we");
 
+//Task 11
+const positiveSum = (arr) => {
+    const sum = arr.reduce((acc, curr) => {
+        if (curr > 0) {
+            return acc + curr
+        }
+
+        return acc;
+    }, 0);
+
+    return sum > 0 ? sum : 0;
+}
+
+positiveSum([-1, 2, 3, 4, -5]);
+
+
+//Task 12
+//#Find the missing letter
+//
+// Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+//
+// You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+// The array will always contain letters in only one case.
+//
+// Example:
+//
+// ['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+//
+// ["a","b","c","d","f"] -> "e"
+// ["O","Q","R","S"] -> "P"
+// (Use the English alphabet with 26 letters!)
+//
+// Have fun coding it and please don't forget to vote and rank this kata! :-)
+//
+// I have also created other katas. Take a look if you enjoyed this kata!
+
+
+function findMissingLetter(array) {
+    const alphabetLower = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    let alphabetUpper = 'acdefghijklmnopqruvwxyz'.toUpperCase().split('').join('');
+
+    for (let i = 0; i < alphabetUpper.length; i++) {
+        let number = alphabetUpper.charCodeAt(i);
+        let nextNumber = alphabetUpper.charCodeAt(i + 1)
+        console.log(nextNumber);
+        if (number + 1 !== nextNumber) {
+            const char = String.fromCharCode(number + 1);
+
+            if (alphabetUpper.includes(char)) {
+                console.log(char);
+                alphabetUpper[i] = char;
+            }
+
+        }
+    }
+    console.log(alphabetUpper);
+
+    return ' ';
+}
+
+findMissingLetter();
+
 
 
