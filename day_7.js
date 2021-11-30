@@ -44,6 +44,7 @@ function sortArray(array) {
 
 const oddOrEven = (array) => array.reduce((acc, curr) => acc + curr, 0) % 2 === 0 ? 'even' : 'odd';
 
+
 //Sort for asc
 for (let i = 1; i < array.length; i++) {
 
