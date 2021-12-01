@@ -22,11 +22,168 @@ const booleanToStringSecond = () => b.toString();
 //
 // If the carpet catches fire, return 'Fire!', if not, return 'That was close!'.
 
-function cake(x, y){
+function cake(x, y) {
     let a = y.split("");
     let res = 0;
-    for (i in a){
+    for (i in a) {
         res += i % 2 === 0 ? a[i].charCodeAt(0) : a[i].charCodeAt(0) - 96;
     }
-    return res > x * 0.7 ? 'Fire!': 'That was close!';
+    return res > x * 0.7 ? 'Fire!' : 'That was close!';
 }
+
+
+//Task 3(7 kyu)
+//Create a function, called removeVowels (or remove_vowels),
+// that takes a string argument and returns that same string with all vowels removed (vowels are "a", "e", "i", "o", "u").
+
+const removeVowels = (str) => {
+    const vowelsArr = ["a", "e", "i", "o", "u"];
+    return [...str].filter((el) => !vowelsArr.includes(el)).join('');
+};
+
+
+//Task 4(7 kyu)
+//Return the number (count) of vowels in the given string.
+//
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+//
+// The input string will only consist of lower case letters and/or spaces.
+
+//First solution
+function getCount(str) {
+    let vowelsCount = 0;
+
+    const vowelsArr = ["a", "e", "i", "o", "u"];
+
+    [...str].forEach((el) => {
+        if (vowelsArr.includes(el)) {
+            vowelsCount += 1;
+        }
+    });
+
+    return vowelsCount;
+}
+
+//Second solution
+
+function getVowelCount(str) {
+    return [...str].filter(c => "aeiouAEIOU".includes(c)).length;
+}
+
+
+//Task 5(6 kyu)
+//You are given an array (which will have a length of at least 3, but could be very large) containing integers.
+// The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N.
+// Write a method that takes the array as an argument and returns this "outlier" N.
+
+function findOutlier(integers) {
+    const evenArr = [];
+    const oddArr = [];
+
+    for (let i = 0; i < integers.length; i++) {
+
+        if (integers[i] % 2) {
+            oddArr.push(integers[i]);
+        } else {
+            evenArr.push(integers[i]);
+        }
+    }
+
+    const element = evenArr.length === 1 ? evenArr[0] : oddArr[0]
+
+    return element;
+}
+
+findOutlier([2, 6, 8, 10, 3]);
+
+//Task 6(7 kyu)
+
+//Take 2 strings s1 and s2 including only letters from ato z.
+// Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+function longest(s1, s2) {
+    let string = new Set([...s1, ...s2]);
+
+    return [...string].sort().join('')
+}
+
+
+const longestSecond = (s1, s2) => [...new Set(s1 + s2)].sort().join('');
+
+
+//Task 7(8 kyu)
+//Write a function called repeatStr which repeats the given string string exactly n times.
+
+const repeatStr = (n, string) => {
+    let str = '';
+    for (let i = 0; i < n; i++) {
+        str += string;
+    }
+
+    return str;
+};
+
+function repeatStrSecond(n, s) {
+    return s.repeat(n);
+}
+
+//Task 8(7 kyu)
+//Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
+//
+// If you want to know more: http://en.wikipedia.org/wiki/DNA
+//
+// In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+//
+// More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+//
+// Example: (input --> output)
+
+const DNAStrand = (dna) => {
+    const dictionary = { A: 'T', T: 'A', C: 'G', G: 'C' };
+
+    return dna
+        .split('')
+        .map(c => dictionary[c])
+        .join('')
+}
+
+//Task 9(7kyu)
+//Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it.
+// If the two numbers are equal return a or b.
+//
+// Note: a and b are not ordered!
+
+
+function getSum(a, b) {
+
+    const min = Math.min(a, b);
+
+    const max = Math.max(a, b);
+
+    let sum = min;
+
+
+    for (let i = min + 1; i <= max; i++) {
+        sum += i;
+    }
+
+    return sum;
+
+}
+
+//Task 10 (7 kyu)
+//You are going to be given a word. Your job is to return the middle character of the word.
+// If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+function getMiddle(string) {
+    let middleIndex = string.length / 2;
+    if (string.length % 2 === 0) {
+        return string.slice(middleIndex - 1, middleIndex + 1);
+    } else {
+        return string.charAt(middleIndex);
+    }
+}
+
+
+
+
